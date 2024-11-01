@@ -4,7 +4,6 @@ const { handleGetApi } = require('./api/getapi');
 const { handleGetPic } = require('./api/getpic');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/styles', express.static(path.join(__dirname, 'styles')));
@@ -12,6 +11,10 @@ app.use('/styles', express.static(path.join(__dirname, 'styles')));
 app.get('/api/getapi', handleGetApi);
 app.get('/api/getpic', handleGetPic);
 
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+// 移除 app.listen，因为 Vercel 会自动处理这部分
+// app.listen(port, () => {
+//     console.log(`Server running at http://localhost:${port}`);
+// });
+
+// 导出 app 以供 Vercel 使用
+module.exports = app;
