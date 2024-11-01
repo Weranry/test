@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'SimHei';
+    src: url('fonts/SimHei.ttf') format('truetype');
+}
+
+body {
+    font-family: 'SimHei', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.calendar-card {
+    width: 300px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.calendar-header {
+    background-color: #e74c3c;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+
+.calendar-body {
+    padding: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.calendar-body div {
+    margin: 10px 0;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

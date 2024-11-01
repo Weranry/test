@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>万年历主页</title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>万年历</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>万年历主页</h1>
-        <nav>
-            <ul>
-                <li><a href="/card.html">万年历卡片</a></li>
-                <li><a href="/api/getpic" target="_blank">查看图片版本</a></li>
-                <li><a href="/api/getapi" target="_blank">查看 API JSON 数据</a></li>
-            </ul>
-        </nav>
+        <h1>万年历</h1>
+        <div id="calendar" class="calendar-card">
+            <div class="calendar-header">
+                <span id="solarDate"></span>
+                <span id="weekDay"></span>
+            </div>
+            <div class="calendar-body">
+                <div id="lunarDate"></div>
+                <div id="ganzhi"></div>
+                <div id="wuhou"></div>
+            </div>
+        </div>
+        <div class="links">
+            <a href="/api/getpic" target="_blank">查看图片版本</a>
+            <a href="/api/getapi" target="_blank">查看 API JSON 数据</a>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
