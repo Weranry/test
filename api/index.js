@@ -1,12 +1,12 @@
 const express = require('express');
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas} = require('canvas');
 const { Solar, Lunar } = require('lunar-javascript');
 const path = require('path');
 
 const app = express();
 
 // 注册字体
-registerFont(path.join(__dirname, '../public/fonts/SimHei.ttf'), { family: 'SimHei' });
+//registerFont(path.join(__dirname, '../public/fonts/arial.ttf'), { family: 'arial' });
 
 function getPerpetualOutput() {
     const solar = Solar.fromDate(new Date());
@@ -52,17 +52,17 @@ app.get('/api/getpic', (req, res) => {
 
     // 标题
     ctx.fillStyle = '#333';
-    ctx.font = 'bold 24px SimHei';
+    ctx.font = 'bold 24px arial';
     ctx.textAlign = 'center';
     ctx.fillText('万年历', 200, 40);
 
     // 日历内容
-    ctx.font = '16px SimHei';
+    ctx.font = '16px arial';
     ctx.textAlign = 'left';
     ctx.fillStyle = '#e74c3c';
     ctx.fillText(data.SolarMonth + data.SolarDay, 50, 100);
     ctx.fillStyle = '#333';
-    ctx.font = '14px SimHei';
+    ctx.font = '14px arial';
     ctx.fillText(data.WeekDay, 50, 130);
     ctx.fillText(data.lunarMonth + data.lunarDay, 50, 160);
     ctx.fillText(data.ganzhiYear, 50, 190);
