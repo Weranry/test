@@ -2,10 +2,10 @@
   "name": "perpetual-calendar",
   "version": "1.0.0",
   "description": "A perpetual calendar with various display options",
-  "main": "src/server.js",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "start": "node api/index.js",
+    "dev": "vercel dev"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -13,6 +13,6 @@
     "canvas": "^2.8.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "vercel": "^23.1.2"
   }
 }

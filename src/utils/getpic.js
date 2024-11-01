@@ -2,6 +2,7 @@ const { createCanvas, registerFont } = require('canvas');
 const path = require('path');
 const { getPerpetualOutput } = require('../components/calendar');
 
+// 使用相对路径注册字体
 registerFont(path.join(__dirname, '../fonts/simhei.ttf'), { family: 'simhei' });
 
 function handleGetPic(req, res) {
