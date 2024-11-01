@@ -1,0 +1,18 @@
+{
+  "name": "perpetual-calendar",
+  "version": "1.0.0",
+  "description": "A perpetual calendar with various display options",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "lunar-javascript": "^1.2.31",
+    "canvas": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
