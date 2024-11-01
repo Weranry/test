@@ -23,6 +23,11 @@ app.get('/card', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/card.html'));
 });
 
+// 通配符路由，处理所有其他请求
+app.get('*', (req, res) => {
+  res.status(404).send('404 - Not Found');
+});
+
 // 错误处理中间件
 app.use((err, req, res, next) => {
   console.error(err.stack);

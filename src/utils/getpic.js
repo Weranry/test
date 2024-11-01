@@ -3,7 +3,7 @@ const path = require('path');
 const { getPerpetualOutput } = require('../components/calendar');
 
 // 使用相对路径注册字体
-registerFont(path.join(__dirname, '../fonts/simhei.ttf'), { family: 'simhei' });
+registerFont(path.join(__dirname, '../fonts/SimSun.ttf'), { family: 'SimSun' });
 
 function handleGetPic(req, res) {
     const canvas = createCanvas(400, 300);
@@ -16,12 +16,12 @@ function handleGetPic(req, res) {
 
     // Title
     ctx.fillStyle = '#333';
-    ctx.font = 'bold 20px simhei';
+    ctx.font = 'bold 20px SimSun';
     ctx.textAlign = 'center';
     ctx.fillText('万年历', 200, 30);
 
     // Calendar content
-    ctx.font = '14px simhei';
+    ctx.font = '14px SimSun';
     ctx.textAlign = 'left';
     let y = 60;
     Object.entries(data).forEach(([key, value]) => {
