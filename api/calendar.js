@@ -1,18 +1,41 @@
 import { ImageResponse } from '@vercel/og';
-import getCalendarData from '../utils/lunarUtils';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { Solar, Lunar } from 'lunar-javascript';
 
 export const config = {
   runtime: 'edge',
 };
 
-export default async function handler() {
+function getCalendarData() {
+    const solar = Solar.fromDate(new Date());
+    const lunar = Lunar.fromDate(new Date());
+    const shuJiu = lunar.getShuJiu();
+    const shuJiuString = shuJiu ? shuJiu.toFullString() : 'N/A';
+    const Fu = lunar.getFu();
+    const FuString = Fu ? Fu.toFullString() : 'N/A';
+
+    return {
+        SolarYear: solar.getYear().toString() + '年',
+        SolarMonth: solar.getMonth().toString() + '月',
+        SolarDay: solar.getDay().toString() + '日',
+        WeekDay: '星期' + solar.getWeekInChinese(),
+        lunarMonth: lunar.getMonthInChinese() + '月',
+        lunarDay: lunar.getDayInChinese(),
+        ganzhiYear: lunar.getYearInGanZhiByLiChun() + '年',
+        ganzhiMonth: lunar.getMonthInGanZhiExact() + '月',
+        ganzhiDay: lunar.getDayInGanZhiExact() + '日',
+        yuexiang: lunar.getYueXiang() + '月',
+        wuhou: lunar.getWuHou(),
+        hou: lunar.getHou(),
+        shujiu: shuJiuString,
+        fu: FuString,
+    };
+}
+
+export default async function handler(req) {
   const data = getCalendarData();
   
-  // 读取字体文件
-  const fontPath = join(process.cwd(), 'public', 'fonts', 'simhei.ttf');
-  const font = readFileSync(fontPath);
+  const fontUrl = 'https://github.com/adobe-fonts/source-han-sans/raw/release/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf';
+  const fontData = await fetch(new URL(fontUrl)).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
@@ -27,7 +50,7 @@ export default async function handler() {
           alignItems: 'flex-start',
           justifyContent: 'flex-start',
           padding: 20,
-          fontFamily: 'SimHei',
+          fontFamily: 'SourceHanSansSC',
         }}
       >
         {Object.entries(data).map(([key, value], index) => (
@@ -42,8 +65,8 @@ export default async function handler() {
       height: 300,
       fonts: [
         {
-          name: 'SimHei',
-          data: font,
+          name: 'SourceHanSansSC',
+          data: fontData,
           style: 'normal',
         },
       ],
